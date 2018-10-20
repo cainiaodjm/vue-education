@@ -5,7 +5,18 @@ export default[
     path: '/',
     name: 'home',
     alias:'/home_page',
-    component: Home
+    component: Home,
+    props:route=>({
+      food:route.query.food
+    }),
+    beforeEnter: (to, from, next) => {
+      if(from.name==="login"){
+        alert('is from login')
+      }else{
+        alert('is not from login')
+      }
+      next()
+    }
   },
   {
     path: '/about',
@@ -13,12 +24,16 @@ export default[
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    props:{
+      food:'banana'
+    }
   },
   {
     path:'/argu/:name',
     name:'argu',
-    component:()=>import('@/views/argu.vue')
+    component:()=>import('@/views/argu.vue'),
+    props:true
   },
   {
     path:'/parent',
@@ -57,6 +72,20 @@ export default[
       }
       // return '/'
     }
+  },
+  {
+    path:'/store',
+    name:'store',
+    component:()=>import('@/views/store.vue')
+  },
+  {
+    path:'/login',
+    name:'login',
+    component:()=>import('@/views/login.vue')
+  },
+  {
+    path:'*',
+    component:()=>import('@/views/error_404.vue')
   }
 ]
 

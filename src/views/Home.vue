@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <span>{{food}}</span>
     <button @click="handleClick('back')">返回上一页</button>
     <button @click="handleClick('push')">跳转到argu</button>
      <button @click="handleClick('replace')">替换到parent</button>
@@ -12,8 +13,22 @@ import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'home',
+  props:{
+    food:{
+      type:String,
+      default:'apple'
+    }
+  },
   components: {
     HelloWorld
+  },
+  beforeRouteEnter (to, from, next) {
+    //this
+ // next(vm=>{
+    //   console.log(vm)
+    // })
+    // console.log(this)
+    next()
   },
   methods:{
     handleClick(type){
