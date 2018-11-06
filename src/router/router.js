@@ -19,6 +19,16 @@ export default[
     }
   },
   {
+    path:'/count-to',
+    component:()=>import('@/views/count-to.vue'),
+    name:'count-to'
+  },
+  {
+    path:'/response-web-page/page-1',
+    name:'page-1',
+    component:()=>import('@/views/response-web-page/page-1/page-1.vue')
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting

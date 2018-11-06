@@ -4,11 +4,13 @@
     <button @click="handleClick('back')">返回上一页</button>
     <button @click="handleClick('push')">跳转到argu</button>
      <button @click="handleClick('replace')">替换到parent</button>
+     <button @click="getUserInfo">通过api获取用户信息console</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import {getUserInfo} from '@/api/user.js'
 import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
@@ -31,6 +33,12 @@ export default {
     next()
   },
   methods:{
+    getUserInfo(){
+     
+      getUserInfo().then(res=>{
+        console.log(res)
+      })
+    },
     handleClick(type){
       if(type==='back'){
         this.$router.back()
