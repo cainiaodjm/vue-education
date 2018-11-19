@@ -1,7 +1,9 @@
 <template>
         <div class="page-1">
 		<div class="Header">
-			<a href="/" class="LogoWrapper"><img src="./img/SOC-Logo.png" alt="Scone O'Clock logo" /></a>
+			<a href="/" class="LogoWrapper">
+            <img src="./img/SOC-Logo.png" alt="Scone O'Clock logo" />
+            </a>
 			<p class="Strap">Scones: the most resplendent of snacks</p>
 		</div>
 		<div class="IntroWrapper">
@@ -47,5 +49,17 @@ export default {
 }
 </script>
 <style lang="less">
-
+@import url('./css/style.less');
+.page-1{
+    .Header{
+        .LogoWrapper{
+            img{
+                max-width: 100%;
+            }
+        }
+        .Stap{
+            font-size: 20px;
+        }
+    }
+}
 </style>

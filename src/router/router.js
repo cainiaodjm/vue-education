@@ -57,12 +57,22 @@ export default[
     ]
   },
   {
+    path:'/split-pane',
+    name:'split-pane',
+    component:()=>import('@/views/split-pane.vue')
+  },
+  {
     path:'/name_view',
     components:{
       default:()=>import('@/views/child.vue'),
       email:()=>import('@/views/email.vue'),
       tel:()=>import('@/views/tel.vue')
     }
+  },
+  {
+    path:'/upload',
+    name:'upload',
+    component:()=>import('@/views/upload.vue'),
   },
   // {
   //   path:'/main',
