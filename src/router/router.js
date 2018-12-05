@@ -24,6 +24,11 @@ export default[
     name:'count-to'
   },
   {
+    path:'/hover-me',
+    component:()=>import('@/views/hover-me.vue'),
+    name:'hover-me'
+  },
+  {
     path:'/response-web-page/page-1',
     name:'page-1',
     component:()=>import('@/views/response-web-page/page-1/page-1.vue')
@@ -38,6 +43,11 @@ export default[
     props:{
       food:'banana'
     }
+  },
+  {
+    path:'/render-page',
+    name:'render-page',
+    component:()=>import('@/views/render-page.vue')
   },
   {
     path:'/argu/:name',
@@ -74,6 +84,7 @@ export default[
     name:'upload',
     component:()=>import('@/views/upload.vue'),
   },
+
   // {
   //   path:'/main',
   //   redirect:'/'
