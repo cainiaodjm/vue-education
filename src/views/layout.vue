@@ -1,7 +1,11 @@
 <template>
     <div class="layout-wrapper">
          <Layout class="layout-outer">
-             <Sider breakpoint="sm" width="225" collapsed-width="90" collapsible hide-trigger v-model="collasped">Sider</Sider>
+             <Sider breakpoint="sm" width="225" collapsed-width="90" collapsible hide-trigger v-model="collasped">
+                 <side-menu :list="menuList" :collapsed="collapsed">
+                      
+                 </side-menu>
+             </Sider>
              <Layout>
                  <Header class="header-wrapper">
                      <Icon :class="triggerClasses" type="md-menu" :size="32" @click.native="handleCollasped"  />
@@ -16,10 +20,55 @@
     </div>
 </template>
 <script>
+import SideMenu from '@/components/side-menu'
 export default {
+    components:{
+        SideMenu
+    },
     data(){
         return {
-            collasped:false
+            collasped:false,
+            menuList:[
+                {
+                    title:'内容管理',
+                    icon:'ios-albums',
+                    name:'content-manage'
+                },
+                {
+                    title:'仓库管理',
+                    icon:'ios-albums',
+                    name:'wh-manage'
+                },
+                 {
+                    title:'财务管理',
+                    icon:'ios-albums',
+                    name:'finance-manage',
+                    children:[
+                        {
+                            title:'账单管理',
+                            icon:'ios-albums',
+                            name:'bill-manage',
+                            children:[
+                                {
+                                    name:'bill-create',
+                                    title:'账单生成',
+                                    icon:'ios-albums'
+                                },
+                                {
+                                    name:'bill-table',
+                                    title:'账单报表',
+                                    icon:'ios-albums'
+                                },
+                            ]
+                        },
+                        {
+                            name:'tax-manage',
+                            title:'税务管理',
+                            icon:'ios-albums'
+                        }
+                    ]
+                }
+            ]
         }
     },
     computed:{
