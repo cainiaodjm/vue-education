@@ -1,22 +1,34 @@
 import Home from '../views/Home.vue'
+import Layout from '../views/layout.vue'
 
 export default[
   {
     path: '/',
     name: 'home',
-    alias:'/home_page',
-    component: Home,
-    props:route=>({
-      food:route.query.food
-    }),
-    beforeEnter: (to, from, next) => {
-      if(from.name==="login"){
-        alert('is from login')
-      }else{
-        alert('is not from login')
-      }
-      next()
-    }
+    
+    component: Layout,
+    children:[
+      {
+        path:'home_page',
+        component:Home
+      },
+			{
+				path:'grid_page',
+				component:()=>import('@/views/grid.vue')
+			}
+    ]
+
+    // props:route=>({
+    //   food:route.query.food
+    // }),
+    // beforeEnter: (to, from, next) => {
+    //   if(from.name==="login"){
+    //     alert('is from login')
+    //   }else{
+    //     alert('is not from login')
+    //   }
+    //   next()
+    // }
   },
   {
     path:'/count-to',
