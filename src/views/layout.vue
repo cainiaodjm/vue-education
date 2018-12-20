@@ -1,14 +1,15 @@
 <template>
     <div class="layout-wrapper">
          <Layout class="layout-outer">
-             <Sider breakpoint="sm" width="225" collapsed-width="70" collapsible hide-trigger v-model="collasped">
-                 <side-menu :list="menuList" :collapsed="this.collasped">
+             <Sider breakpoint="sm" width="225" collapsed-width="70" collapsible hide-trigger v-model="collapsed">
+                 <side-menu :list="menuList" :collapsed="this.collapsed">
                       
                  </side-menu>
              </Sider>
              <Layout>
                  <Header class="header-wrapper">
-                     <Icon :class="triggerClasses" type="md-menu" :size="32" @click.native="handleCollasped"  />
+                     <!-- <Icon :class="triggerClasses" type="md-menu" :size="32" @click.native="handleCollasped"  /> -->
+                     <header-bar :collapsed="this.collapsed"  @on-coll-change="handleCollapsedChange"></header-bar>
                  </Header>
                  <Content class="content-card">
                      <Card shadow class="page-card">
@@ -21,13 +22,15 @@
 </template>
 <script>
 import SideMenu from '@/components/side-menu'
+import HeaderBar from '@/components/header-bar'
 export default {
     components:{
-        SideMenu
+        SideMenu,
+        HeaderBar
     },
     data(){
         return {
-            collasped:false,
+            collapsed:false,
             menuList:[
                 {
                     title:'内容管理',
@@ -82,13 +85,16 @@ export default {
         triggerClasses(){
             return [
                 'trigger-icon',
-                this.collasped ? 'rotate' :''
+                this.collapsed ? 'rotate' :''
             ]
-        }
+        },
+       
     },
     methods:{
-        handleCollasped(){
-            this.collasped=!this.collasped
+         handleCollapsedChange(state){
+            console.log('layout中的collapsed为'+state)
+            console.log('我是调用header-bar的组件 我已经接收到了修改事件 并将修改后的值传给header-bar了')
+            this.collapsed=state
         }
     }
 }
