@@ -1,8 +1,8 @@
 <template>
     <div class="layout-wrapper">
          <Layout class="layout-outer">
-             <Sider breakpoint="sm" width="225" collapsed-width="90" collapsible hide-trigger v-model="collasped">
-                 <side-menu :list="menuList" :collapsed="collapsed">
+             <Sider breakpoint="sm" width="225" collapsed-width="70" collapsible hide-trigger v-model="collasped">
+                 <side-menu :list="menuList" :collapsed="this.collasped">
                       
                  </side-menu>
              </Sider>
@@ -32,7 +32,14 @@ export default {
                 {
                     title:'内容管理',
                     icon:'ios-albums',
-                    name:'content-manage'
+                    name:'content-manage',
+                    children:[
+                        {
+                            title:'添加文章',
+                            icon:'ios-albums',
+                            name:'add-title'
+                        }
+                    ]
                 },
                 {
                     title:'仓库管理',
