@@ -10,6 +10,10 @@ Vue.config.productionTip = false
 //向实例中注册$bus
 Vue.prototype.$bus=Bus
 Vue.use(iView);
+/**
+ * @description 全局注册应用配置
+ */
+Vue.prototype.$config = config
 new Vue({
   router,
   store,
