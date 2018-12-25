@@ -15,7 +15,19 @@ export default[
 			{
 				path:'grid_page',
 				component:()=>import('@/views/grid.vue')
-			}
+      },
+      {
+        path:'i-button-page',
+        component:()=>import('@/views/i-button-page.vue')
+      },
+      {
+        path:'form-page',
+        component:()=>import('@/views/form-page.vue')
+      },
+      {
+        path:'slide-render',
+        component:()=>import('@/views/slide-render.vue')
+      }
     ]
 
     // props:route=>({
