@@ -107,7 +107,7 @@ export default {
     },
     update() {
       if (this.slide) {
-        this.slide.destory();
+         this.slide.destroy()
       }
       this.$nextTick(() => {
         this.init();
@@ -183,6 +183,7 @@ export default {
       this.update();
     },
     autoPlay() {
+      console.log(this.autoPlay)
       this.update();
     },
     speed() {

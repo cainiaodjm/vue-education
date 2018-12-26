@@ -6,7 +6,9 @@ import store from './store'
 import Bus from './bus'
 import fastclick from 'fastclick'
 import iView from 'iview';
+if(process.env.NODE_ENV !== 'production') require('./mock')
 import 'iview/dist/styles/iview.css';
+
 Vue.config.productionTip = false
 //向实例中注册$bus
 Vue.prototype.$bus=Bus

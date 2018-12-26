@@ -1,36 +1,46 @@
 <template>
   <div class="slide-render-view">
-      <div class="slide-wrapper">
-          <div class="slide-content">
-              <slide>
-                  <div v-for="item in data ">
-                      <a :href="item.url">
-                          <img :src="item.imageUrl" alt="">
-                      </a>
-                  </div>
-              </slide>
+    <div class="slide-wrapper">
+      <div class="slide-content">
+        <slide :autoPlay="isAutoPlay">
+          <div v-for="item in data ">
+            <a :href="item.url">
+              <img :src="item.imageUrl" alt>
+            </a>
           </div>
+        </slide>
       </div>
-      <div class="group">
-          <Card style="width:100%" :shadow="false">
-              asada
-          </Card>
-      </div>
+    </div>
+    <div class="group">
+      <Card style="width:100%" :shadow="true">
+        <switch-option
+          class="item sub"
+          name="auto play"
+          :value="false"
+          @update:value="updateAutoPlay"
+        ></switch-option>
+        <input-option v-show="isAutoPlay" class="item sub" name="interval"></input-option>
+      </Card>
+    </div>
   </div>
 </template>
 <script>
 import { bannerData } from "@/lib/tools.js";
 import Slide from "@/components/slide";
+import switchOption from "@/components/switch-option";
+import inputOption from "@/components/input-option";
 const items = bannerData;
 export default {
   name: "slide-render",
   components: {
-    Slide
+    Slide,
+    switchOption,
+    inputOption
   },
-  computed:{
-      data(){
-          return items[0]
-      }
+  computed: {
+    data() {
+      return items[0];
+    }
   },
   data() {
     return {
@@ -44,26 +54,49 @@ export default {
       threshold: 0.3,
       interval: 4000
     };
+  },
+  methods: {
+    updateAutoPlay(val) {
+      this.isAutoPlay = val;
+    }
   }
 };
 </script>
 <style lang="less">
-    .slide-render-view{
-
-        .slide-wrapper{
-            position: relative;
-            width: 100%;
-            padding-top: 40%;
-            margin-bottom: 10px;
-            overflow: hidden;
-            .slide-content{
-                position:absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%
-            }
-        }
+.slide-render-view {
+  .slide-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 40%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    .slide-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
+  }
+  .group {
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.3rem;
+    background: #fff;
+    .item {
+      height: 3.2rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      &.sub {
+        font-size: 14px;
+      }
+    }
+    .item:last-child {
+      border-bottom: none;
+    }
+    .item:nth-child(even) {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+}
 </style>
 
