@@ -1,7 +1,7 @@
 <template>
     <div class="input-option">
         <span class="name">{{name}}</span>
-        <input type="text">
+        <input type="text" v-model="inputValue">
     </div>
 </template>
 <script>
@@ -10,6 +10,18 @@ export default {
     props:{
         name:{
             type:String,
+        },
+        value:null
+    },
+    data(){
+        return {
+            inputValue:this.value
+        }  
+    },
+    watch:{
+        inputValue(newValue){
+
+            this.$emit('update:value',newValue)
         }
     }
 }

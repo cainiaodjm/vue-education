@@ -2,7 +2,7 @@
   <div class="slide-render-view">
     <div class="slide-wrapper">
       <div class="slide-content">
-        <slide :autoPlay="isAutoPlay">
+        <slide :autoPlay="isAutoPlay" :interval="interval" :loop="isLoop">
           <div v-for="item in data ">
             <a :href="item.url">
               <img :src="item.imageUrl" alt>
@@ -16,10 +16,20 @@
         <switch-option
           class="item sub"
           name="auto play"
-          :value="false"
+          :value="isAutoPlay"
           @update:value="updateAutoPlay"
         ></switch-option>
-        <input-option v-show="isAutoPlay" class="item sub" name="interval"></input-option>
+        <input-option v-show="isAutoPlay"
+         class="item sub" 
+         @update:value="updateInterval" 
+         name="interval" :value="interval">
+         </input-option>
+         <switch-option
+          class="item sub"
+          name="loop"
+          :value="isLoop"
+          @update:value="updateLoop"
+        ></switch-option>
       </Card>
     </div>
   </div>
@@ -58,6 +68,12 @@ export default {
   methods: {
     updateAutoPlay(val) {
       this.isAutoPlay = val;
+    },
+    updateInterval(val){
+        this.interval=val
+    },
+    updateLoop(val){
+        this.isLoop=val
     }
   }
 };
