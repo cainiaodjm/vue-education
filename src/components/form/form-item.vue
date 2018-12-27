@@ -16,7 +16,10 @@ export default {
             default:''
         },
         prop:{
-            //对应表单域 Form 组件 model 里的字段
+            /**
+             * 对应表单域 Form 组件 model 里的字段，
+             * 用于在校验或重置时访问表单组件绑定的数据，类型为 String。
+             */
             type:String,
             default:''
         }

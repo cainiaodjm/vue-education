@@ -1,8 +1,11 @@
 <template>
     <div>
         <i-form :model="formValidate" :rules="rulesValidate">
-            <i-form-item>
-
+            <i-form-item label="用户名" prop="name">
+                <Input v-model="formValidate.name"></Input>
+            </i-form-item>
+            <i-form-item label="邮箱" prop="email">
+                <Input v-model="formValidate.email"></Input>
             </i-form-item>
         </i-form>
     </div>
@@ -10,6 +13,7 @@
 <script>
 import iForm from '@/components/form/form.vue'
 import iFormItem from '@/components/form/form-item.vue'
+
 export default {
     name:'form-page',
     components:{
@@ -20,7 +24,7 @@ export default {
         return{
             formValidate:{
                 name:'',
-                mail:''
+                email:''
             },
             ruleValidate:{
                 name:[

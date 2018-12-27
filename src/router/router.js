@@ -27,6 +27,14 @@ export default[
       {
         path:'slide-render',
         component:()=>import('@/views/slide-render.vue')
+      },
+      {
+        path:'folder-tree-page',
+        component:()=>import('@/views/folder-tree-page/folder-tree-page.vue')
+      },
+      {
+        path:'form',
+        component:()=>import('@/views/form.vue')
       }
     ]
 
