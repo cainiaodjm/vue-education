@@ -6,15 +6,27 @@
       :fileList="fileList"
       :fileDrop="fileDrop"
     ></folder-tree>
+    <folder-tree-demo 
+    :folderList.sync="folderList"
+    :fileList.sync="fileList"
+    :folderDrop="folderDrop"
+    :fileDrop="fileDrop"
+    :beforeDelete="beforeDelete"
+    :beforeRename="beforeRename"
+       
+    >
+    </folder-tree-demo>
   </div>
 </template>
 <script>
 import folderTree from "@/components/folder-tree";
+import folderTreeDemo from '@/components/folder-tree-demo'
 import { getFileList, getFolderList } from "@/api/data";
 import { putFileInFolder, transferFolderToTree } from "@/lib/util";
 export default {
   components: {
-    folderTree
+    folderTree,
+    folderTreeDemo
   },
   data() {
     return {
@@ -42,6 +54,35 @@ export default {
         }
       ]
     };
+  },
+  methods:{
+    beforeDelete(){
+      //在组件删除之前，传递删除api
+      return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+          let error=new Error('error')
+          // let error=null
+          if(!error){
+            resolve()
+          }else{
+            reject(error)
+          }
+        },2000)
+      })
+    },
+    beforeRename(){
+       return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+          let error=new Error('error')
+          // let error=null
+          if(!error){
+            resolve()
+          }else{
+            reject(error)
+          }
+        },2000)
+      })
+    }
   },
   mounted() {
     //一次性请求多个

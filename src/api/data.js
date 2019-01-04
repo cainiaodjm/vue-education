@@ -11,3 +11,10 @@ export const getFileList=()=>{
         method:'get'
     })
 }
+export const addUser=(data)=>{
+    return axios.request({
+        url:'users/add_user',
+        data:data,
+        method:'post'
+    })
+}

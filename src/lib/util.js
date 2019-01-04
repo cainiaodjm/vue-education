@@ -28,7 +28,7 @@ export const putFileInFolder=(folderList,fileList)=>{
     //将传递过来得文件进行拷贝
     const folderListCloned=clonedeep(folderList)
     const fileListCloned=clonedeep(fileList)
-    return folderListCloned.map(folderItem=>{
+    const folderListClone= folderListCloned.map(folderItem=>{
         const folderId=folderItem.id
         let index=fileListCloned.length
         while(--index>=0){
@@ -44,11 +44,15 @@ export const putFileInFolder=(folderList,fileList)=>{
             }
         }
         folderItem.type="folder"
+        // console.log(folderItem)
         return folderItem
     })
+    console.log(folderListClone)
+    return folderListClone
 }
 //将文件夹列表转化为树状
 export const transferFolderToTree=(folderList)=>{
+    console.log(folderList)
     if(!folderList.length){
         return []
     }

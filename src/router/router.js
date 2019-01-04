@@ -35,6 +35,10 @@ export default[
       {
         path:'form',
         component:()=>import('@/views/form.vue')
+      },
+      {
+        path:'form-dynamic',
+        component:()=>import('@/views/form-dynamic.vue')
       }
     ]
 
