@@ -5,7 +5,8 @@
       :folderDrop="folderDrop"
       :fileList="fileList"
       :fileDrop="fileDrop"
-    ></folder-tree>
+    >
+    </folder-tree>
     <folder-tree-demo 
     :folderList.sync="folderList"
     :fileList.sync="fileList"

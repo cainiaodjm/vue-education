@@ -3,7 +3,6 @@ const path = require('path')
 const resolve = dir => {
   return path.join(__dirname, dir)
 }
-
 // 项目部署基础
 // 默认情况下，我们假设你的应用将被部署在域的根目录下,
 // 例如：https://www.my-app.com/
@@ -38,8 +37,7 @@ module.exports = {
 
   // 这里写你调用接口的基础路径，来解决跨域，如果设置了代理，那你本地开发环境的axios的baseUrl要写为 '' ，即空字符串
 	devServer: {
-
-      // proxy:'http://localhost:4000',
+      // proxy:'https://easy-mock.com/mock/5c1c5e7f598a9d0a0141abd1/cainiaodjm-admin',
 	    disableHostCheck: true,  
 	},
 	

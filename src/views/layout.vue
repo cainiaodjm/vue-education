@@ -2,18 +2,18 @@
     <div class="layout-wrapper">
          <Layout class="layout-outer">
              <Sider breakpoint="sm" width="225" collapsed-width="70" collapsible hide-trigger v-model="collapsed">
-                 <side-menu :list="menuList" :collapsed="this.collapsed">
+                <side-menu :list="menuList" :collapsed="this.collapsed">
                       
-                 </side-menu>
+                </side-menu>
              </Sider>
              <Layout>
                  <Header class="header-wrapper">
                      <!-- <Icon :class="triggerClasses" type="md-menu" :size="32" @click.native="handleCollasped"  /> -->
-                     <header-bar :collapsed="this.collapsed"  @on-coll-change="handleCollapsedChange"></header-bar>
+                    <header-bar :collapsed="this.collapsed"  @on-coll-change="handleCollapsedChange"></header-bar>
                  </Header>
                  <Content class="content-card">
                      <Card shadow class="page-card">
-                         <router-view></router-view>
+                        <router-view></router-view>
                      </Card>
                  </Content>
              </Layout>

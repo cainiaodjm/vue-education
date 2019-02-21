@@ -1,4 +1,7 @@
 import clonedeep from 'clonedeep'
+import {defaultConfig} from '@/config'
+import Cookies from 'js-cookie'
+const {cookieExpires}=defaultConfig
 export const showTitle = (item, vm) => {
     let { title, __titleIsFunction__ } = item.meta
     if (!title) return
@@ -52,7 +55,6 @@ export const putFileInFolder=(folderList,fileList)=>{
 }
 //将文件夹列表转化为树状
 export const transferFolderToTree=(folderList)=>{
-    console.log(folderList)
     if(!folderList.length){
         return []
     }
@@ -71,4 +73,16 @@ export const transferFolderToTree=(folderList)=>{
         return arr
     }
     return handle(0)
+}
+
+export const TOKEN_KEY = 'token'
+
+export const setToken = (token) => {
+  Cookies.set(TOKEN_KEY, token, {expires: cookieExpires || 1})
+}
+
+export const getToken = () => {
+  const token = Cookies.get(TOKEN_KEY)
+  if (token) return token
+  else return false
 }

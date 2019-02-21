@@ -18,3 +18,10 @@ export const addUser=(data)=>{
         method:'post'
     })
 }
+export const getTableData = () => {
+    return axios.request({
+      url: 'get_table_data',
+      method: 'get'
+    })
+}
+  

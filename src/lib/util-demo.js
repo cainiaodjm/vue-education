@@ -1,4 +1,5 @@
 import clonedeep from 'clonedeep'
+
 export const putFileInFolder=(folderList,fileList)=>{
     
     //在这里做的操作是会影响到原始数据的 因为数组是引用类型 在这里就需要做深拷贝

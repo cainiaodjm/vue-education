@@ -4,6 +4,7 @@ import actions from './actions'
 import mutations from './mutations'
 import state from './state'
 import user from './module/user'
+import router from './module/router'
 import getters from './getters'
 import saveInLoacal from './plugin/saveInLocal'
 Vue.use(Vuex)
@@ -14,7 +15,8 @@ export default new Vuex.Store({
   actions,
   getters,
   modules:{
-      user
+      user,
+      router
   },
   // plugins:[saveInLoacal]
 })

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { baseURL } from '@/config'
-// import {getToken} from '@/libs/util'
-// import { Spin } from 'iview'
+import {getToken} from '@/lib/util'
+
 class HttpRequest {
   constructor(baseUrl = baseURL) {
     this.baseUrl = baseUrl
@@ -31,6 +31,7 @@ class HttpRequest {
         // Spin.show() // 不建议开启，因为界面不友好
       }
       this.queue[url] = true
+      config.headers['Authorization']=getToken()
       return config
     }, error => {
       return Promise.reject(error)
@@ -39,7 +40,7 @@ class HttpRequest {
     instance.interceptors.response.use(res => {
       this.destroy(url)
       const { data, status } = res
-      return { data, status }
+      return res.data
     }, error => {
       this.destroy(url)
       return Promise.reject(error)
