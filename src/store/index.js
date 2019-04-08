@@ -5,6 +5,7 @@ import mutations from './mutations'
 import state from './state'
 import user from './module/user'
 import router from './module/router'
+import topNav from './module/topNav'
 import getters from './getters'
 import saveInLoacal from './plugin/saveInLocal'
 Vue.use(Vuex)
@@ -16,7 +17,8 @@ export default new Vuex.Store({
   getters,
   modules:{
       user,
-      router
+      router,
+      topNav
   },
   // plugins:[saveInLoacal]
 })

@@ -1,7 +1,7 @@
 <template>
     <div class="side-menu-wrapper">
         <slot></slot>
-        <Menu v-show="!collapsed" width="auto" theme="dark">
+        <Menu v-show="!collapsed" width="auto" @on-select="handleSelect" theme="dark">
             <template v-for="item in list">
                 <re-submenu 
                 v-if="item.children" 
@@ -11,9 +11,9 @@
                 >
                     
                 </re-submenu>
-                <menu-item :key="`menu_${item.name}`" :name="item.name" v-else>
+                <menu-item :key="`menu_${item.name}`"  :name="item.name" v-else>
                     <Icon :type="item.icon"/>
-                    {{item.title}}
+                    {{item.meta.title}}
                 </menu-item>
             </template>
         </Menu>
@@ -50,6 +50,13 @@ export default {
             default:()=>{
                 return []
             }
+        }
+    },
+    methods:{
+        handleSelect(name){
+            this.$router.push({
+                name
+            })
         }
     }
 }
