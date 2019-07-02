@@ -1,6 +1,6 @@
 <template>
     <div class="count-to">
-        <count-to ref="countTo" :end-val="endVal"  @on-animation-end="handleEnd">
+        <count-to ref="countTo" :end-val="endVal" :simplify="true" @on-animation-end="handleEnd">
            <span slot="left">金额:</span>
            <span style="marginLeft:2px" slot="right">元</span>
         </count-to>
@@ -28,7 +28,7 @@ export default {
          console.log( this.$refs.countTo.getCount())
        },
        up(){
-           this.endVal+=Math.random()*100 
+           this.endVal+=Math.random()*1000
        },
        handleEnd(endVal){
            console.log(endVal)

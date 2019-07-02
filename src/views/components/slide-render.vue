@@ -3,7 +3,7 @@
     <div class="slide-wrapper">
       <div class="slide-content">
         <slide :autoPlay="isAutoPlay" :interval="interval" :loop="isLoop">
-          <div v-for="item in data ">
+          <div v-for="(item,index) in data " :key="index">
             <a :href="item.url">
               <img :src="item.imageUrl" alt>
             </a>

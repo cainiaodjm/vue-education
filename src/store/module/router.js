@@ -31,6 +31,13 @@ const actions={
             try{
                 let routerList=[]
                 //将获取到得页面列表转换成二维数组
+                /**
+                 * 将页面列表通过Object.entries 将对象转换成键值对数组 
+                 * 键为路由 值为true or false 
+                 * 通过every来判断整个列表是否全部为true 
+                 * 为true的话 则将内部路由列表全部挂载到路由上
+                 * 否则的话就要进行筛选
+                 */
                 if(Object.entries(page_list).every(item=>item[1])){
                     routerList=routerMap
                 }else{

@@ -5,7 +5,7 @@
 // export const baseURL=process.env.NODE_ENV==='production'?
 // 'http//production.com':'http://localhost:3000'
 export const baseURL=process.env.NODE_ENV==='production'?
-'http//production.com':'https://easy-mock.com/mock/5c1c5e7f598a9d0a0141abd1/cainiaodjm-admin'
+'https://www.cainiaodjm.top:17000':'http://localhost:17100'
 
 export const defaultConfig={
     /**
@@ -18,8 +18,8 @@ export const defaultConfig={
     useI18n: true,
     cookieExpires: 1,
     baseUrl: {
-        dev: 'https://easy-mock.com/mock/5c1c5e7f598a9d0a0141abd1/cainiaodjm-admin',
-        pro: 'https://cainiaodjm.top'
+        dev: 'http://localhost:17100',
+        pro: 'https://www.cainiaodjm.top:17000'
     },
 
 }

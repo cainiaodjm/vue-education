@@ -7,7 +7,7 @@ import Bus from './bus'
 import fastclick from 'fastclick'
 import iView from 'iview';
 
-require('./mock')
+// require('./mock')
 // if(process.env.NODE_ENV !== 'production') require('./mock')
 import 'iview/dist/styles/iview.css';
 

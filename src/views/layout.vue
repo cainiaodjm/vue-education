@@ -17,16 +17,18 @@
           <header-bar :collapsed="this.collapsed" @on-coll-change="handleCollapsedChange"></header-bar>
         </Header>
         <Content class="content-card">
-          <div>
-            <Tabs type="card" :animated="false">
-              <TabPane :label="item.name" v-for="(index,item) in tabList" :key="`tabNav${index}`"></TabPane>
-            </Tabs>
-          </div>
-          <div class="view-box">
-            <Card shadow class="page-card">
-              <router-view></router-view>
-            </Card>
-          </div>
+          <Layout class="main-layout-con">
+            <div class="tag-nav-wrapper">
+              <Tabs type="card" :animated="false">
+                <TabPane :label="item.name" v-for="(index,item) in tabList" :key="`tabNav${index}`"></TabPane>
+              </Tabs>
+            </div>
+            <Content class="content-wrapper">
+              <keep-alive>
+                <router-view></router-view>
+              </keep-alive>
+            </Content>
+          </Layout>
         </Content>
       </Layout>
     </Layout>
@@ -35,7 +37,7 @@
 <script>
 import SideMenu from "@/components/side-menu";
 import HeaderBar from "@/components/header-bar";
-import { mapState , mapMutations } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
   components: {
     SideMenu,
@@ -98,21 +100,22 @@ export default {
     triggerClasses() {
       return ["trigger-icon", this.collapsed ? "rotate" : ""];
     },
+    //从全局的state中获取当前的routers 当然这个routers是包含所有的 不能把公共页放进去
     ...mapState({
-      routers: state =>state.router.routers.filter(item => {
+      routers: state =>
+        state.router.routers.filter(item => {
           return item.path !== "*" && item.name !== "login";
         }),
-        tabList:state=>state.topNav.tabList
-    }),
+      tabList: state => state.topNav.tabList
+    })
   },
-  watch:{
-      /**
-       * 监视
-       */
-      '$route'(newRoute){
-       
-        this.UPDATE_ROUTER(newRoute)
-      }
+  watch: {
+    /**
+     * 监视
+     */
+    $route(newRoute) {
+      this.UPDATE_ROUTER(newRoute);
+    }
   },
   methods: {
     handleCollapsedChange(state) {
@@ -122,13 +125,24 @@ export default {
       );
       this.collapsed = state;
     },
-    ...mapMutations([
-      'UPDATE_ROUTER'
-    ])
+    ...mapMutations(["UPDATE_ROUTER"])
   }
 };
 </script>
 <style lang="less">
+.tag-nav-wrapper {
+  padding: 0;
+  height: 40px;
+  background: #f0f0f0;
+}
+.main-layout-con {
+  height: 100%;
+}
+.content-wrapper {
+  padding: 18px;
+  height: calc(100% - 80px);
+  overflow: auto;
+}
 .layout-wrapper,
 .layout-outer {
   height: 100%;
@@ -143,6 +157,9 @@ export default {
   }
   .header-wrapper {
     background-color: #ffffff;
+    box-sizing: border-box;
+    height: 64px;
+    line-height: 64px;
     box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
     padding: 0 25px;
     .trigger-icon {
@@ -155,14 +172,20 @@ export default {
     }
   }
   .content-card {
-    padding: 10px;
-    .ivu-tabs-bar{
-        margin-bottom: 0px;
-        border: none;
+    height: calc(100% - 60px);
+    overflow: hidden;
+    .ivu-tabs-bar {
+      margin-bottom: 0px;
+      border: none;
     }
   }
+  .view-box {
+    height: 100%;
+    overflow: hidden;
+  }
   .page-card {
-    min-height: ~"calc(100vh - 84px)";
+    height: calc(100% - 84px);
+    overflow: auto;
   }
 }
 </style>

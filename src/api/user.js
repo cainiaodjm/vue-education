@@ -8,13 +8,13 @@ export const getUserInfo=()=>{
 }
 export const authorization=()=>{
     return axios.request({
-        url:'/authorization',
-        method:'get'
+        url:'/v1/authorization',
+        method:'post'
     })
 }
 export const login=(username,password)=>{
     return axios.request({
-        url:'/login',
+        url:'/v1/user/login',
         method:'post',
         data:{
             username:username,

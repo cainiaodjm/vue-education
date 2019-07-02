@@ -2,10 +2,10 @@
   <div class="form-wrapper">
     <Form ref="formValidate" :rules="rules" :model="formData" :label-width="80">
       <FormItem label="姓名" prop="name">
-        <Input v-model="formData.name"></Input>
+        <Input v-model="formData.name"/>
       </FormItem>
       <FormItem label="密码" prop="password">
-        <Input v-model="formData.password" type="password"></Input>
+        <Input v-model="formData.password" type="password"/>
       </FormItem>
       <FormItem>
         <Button @click="handleSubmit">提交</Button>
