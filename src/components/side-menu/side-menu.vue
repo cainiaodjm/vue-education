@@ -9,7 +9,6 @@
                 :name="item.name"
                 :parent="item"
                 >
-                    
                 </re-submenu>
                 <menu-item :key="`menu_${item.name}`"  :name="item.name" v-else>
                     <Icon :type="item.icon"/>
@@ -54,9 +53,7 @@ export default {
     },
     methods:{
         handleSelect(name){
-            this.$router.push({
-                name
-            })
+            this.$emit('on-select',name)
         }
     }
 }

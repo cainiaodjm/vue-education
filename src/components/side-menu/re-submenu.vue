@@ -4,16 +4,14 @@
             <Icon :type="parent.icon"/>
             {{parent.meta.title}}
         </template>
+         <!-- 这里需要用到递归组件 -->
         <template v-for="item in parent.children">
                 <re-submenu 
                 v-if="item.children" 
                 :key="`menu_${item.name}`" 
                 :name="item.name"
                 :parent="item"
-                >
-                    <!-- 这里需要用到递归组件 -->
-                    
-                </re-submenu>
+                ></re-submenu>
                 <menu-item :key="`menu_${item.name}`" :name="item.name" v-else>
                     <Icon :type="item.icon"/>
                     {{item.meta.title}}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    {{message}}
+    <p>{{a}}</p>
+    <p>{{b}}</p>
+    <p>{{countAB}}</p>
+    <button @click='changeA'>改变a的值</button>
+    <button @click='changeB'>改变b的值</button>
+    <my-component my-prop="这是我的一个Prop"></my-component>
+  </div>
+</body>
+<script src="./vue.js"></script>
+<script>
+  Vue.component('my-component',{
+    data(){
+      return {
+        a:'a'
+      }
+    },
+    props:{
+            myProp:{
+              type:String,
+              default:''
+            }
+    },
+    render:function(createElement){
+      return createElement(
+        'div',
+        {
+          "style":{
+            color:'red',
+            fontSize:'32px'
+          },
+         
+        },
+        [
+          '这是一段简单的文字',
+          createElement(
+            'h1',
+            {
+              "style":{
+                color:'blue'
+              }
+            },
+            `这是h1标签${this.myProp}`
+          ),
+          createElement(
+            'h2',
+            {
+              "style":{
+                color:'blue'
+              }
+            },
+            `这是h2标签${this.myProp}`
+          )
+        ]
+      )
+    }
+  })
+  var app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Vue',
+      a: 1,
+      b: 2,
+      c: 3,
+      d: 4,
+      e: {
+        f: {
+          g: 5
+        }
+      }
+    },
+    mounted() {
+      
+    },
+    computed: {
+      countAB(){
+        return this.a+this.b
+      }
+    },
+    watch: {
+      a:function(val,oldVal){
+        console.log('new: %s, old: %s', val, oldVal)
+      },
+      b:'watchB'
+    },
+    methods: {
+      changeA(){
+        this.a+=1
+      },
+      changeB(){
+        this.b+=1
+      },
+      watchB(val,oldVal){
+        console.log('newB: %s, oldB: %s', val, oldVal)
+      }
+    },
+  })
+</script>
+
+</html>

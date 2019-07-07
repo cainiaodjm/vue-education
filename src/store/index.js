@@ -4,6 +4,7 @@ import actions from './actions'
 import mutations from './mutations'
 import state from './state'
 import user from './module/user'
+import  app from './module/app'
 import router from './module/router'
 import topNav from './module/topNav'
 import getters from './getters'
@@ -18,7 +19,8 @@ export default new Vuex.Store({
   modules:{
       user,
       router,
-      topNav
+      topNav,
+      app
   },
   // plugins:[saveInLoacal]
 })

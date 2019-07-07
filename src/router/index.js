@@ -21,17 +21,22 @@ router.beforeEach((to,from,next)=>{
     //在进入页面前 需要判断用户是否有token
     const token=getToken()
     if(token){
+        
         if(!store.state.router.hasGetRules){
             //调用认证接口获取菜单
             store.dispatch('authorization',token).then(page_list=>{
-                console.log(page_list)
+
                 //获取到可访问得页面后 需要进行页面过滤
                 store.dispatch('concatRoutes',page_list).then(routers=>{
                     router.addRoutes(routers)
                     next({...to,replace:true})
                 }).catch(()=>{
+                    setToken('')
                     next({name:"login"})
                 })
+            }).catch((e)=>{
+                setToken('')
+                next({name:"login"})
             })
         }else{
             next()
