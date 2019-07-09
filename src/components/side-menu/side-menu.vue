@@ -4,16 +4,16 @@
         <Menu v-show="!collapsed" width="auto" @on-select="handleSelect" theme="dark">
             <template v-for="item in list">
                 <re-submenu 
-                v-if="item.children" 
+                v-if="item.children"
                 :key="`menu_${item.name}`" 
                 :name="item.name"
                 :parent="item"
                 >
                 </re-submenu>
-                <menu-item :key="`menu_${item.name}`"  :name="item.name" v-else>
+                <MenuItem :key="`menu_${item.name}`"  :name="item.name" v-else>
                     <Icon :type="item.icon"/>
                     {{item.meta.title}}
-                </menu-item>
+                </MenuItem>
             </template>
         </Menu>
         <div v-show="collapsed" class="drop-wrapper">

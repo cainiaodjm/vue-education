@@ -33,7 +33,7 @@ class HttpRequest {
       }
       this.queue[url] = true
       
-      config.headers['Authorization']=getToken()
+      config.headers['Authorization']=encode()
       return config
     }, error => {
       return Promise.reject(error)

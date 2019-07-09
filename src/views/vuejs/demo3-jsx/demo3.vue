@@ -57,7 +57,21 @@ export default {
                 title: params.row.portrayal.length + "portrayals",
                 placement: "bottom"
               }
-            });
+            },[
+               h('Tag', params.row.portrayal.length),
+                                  h('div', {
+                                    slot: 'content'
+                                }, [
+                                    h('ul', this.tableData[params.index].portrayal.map(item => {
+                                        return h('li', {
+                                            style: {
+                                                textAlign: 'center',
+                                                padding: '4px'
+                                            }
+                                        }, item)
+                                    }))
+                                ])
+            ]);
           }
         },
         {

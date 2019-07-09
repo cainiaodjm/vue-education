@@ -4,7 +4,7 @@
       <Sider
         breakpoint="sm"
         width="225"
-        collapsed-width="70"
+        collapsed-width="64"
         collapsible
         hide-trigger
         v-model="collapsed"
@@ -140,6 +140,7 @@ export default {
        * router.push 的参数可以是一个字符串,或者是一个描述地址的对象
        * 
        */
+      console.log(route)
      let {name,params,query}={}
      if(typeof route === 'string') name=route
      else{

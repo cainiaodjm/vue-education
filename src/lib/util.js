@@ -114,6 +114,7 @@ export const getToken = () => {
 export const encode = () => {
     const token = getToken()
     const base64 = Base64.encode(token + ":")
+    console.log('Basic ' + base64)
     return 'Basic ' + base64
 }
 export const getTagNavListFromLocalstorage = () => {

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import {defaultConfig} from './config'
+import importDirective from './directive'
 import router from './router'
 import store from './store'
 import Bus from './bus'
@@ -12,7 +13,7 @@ import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 
 Vue.config.productionTip = false
-
+importDirective(Vue)
 //向实例中注册$bus
 Vue.prototype.$bus=Bus
 Vue.use(iView);
