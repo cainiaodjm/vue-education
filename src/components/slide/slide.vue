@@ -183,7 +183,6 @@ export default {
       this.update();
     },
     autoPlay() {
-      console.log(this.autoPlay)
       this.update();
     },
     speed() {

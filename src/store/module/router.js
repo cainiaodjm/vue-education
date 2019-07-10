@@ -12,6 +12,7 @@ const mutations={
         state.routers=routerList
         state.hasGetRules=true
     }
+
 }
 
 const getAccessRouterList=(routes,page_list)=>{

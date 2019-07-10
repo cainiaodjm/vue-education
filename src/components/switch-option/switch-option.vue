@@ -27,7 +27,6 @@ export default {
   },
   methods:{
       clickSwitch(){
-        //   console.log(this.checked)
           this.checked=!this.checked
       }
   }

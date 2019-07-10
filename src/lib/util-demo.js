@@ -24,7 +24,6 @@ export const putFileInFolder=(folderList,fileList)=>{
     return cloneFolderList
 }
 export const transferFolderToTree=(folderList)=>{
-    // console.log(folderList)
     //将文件夹列表转化为树装结构
 
     if(!folderList.length){

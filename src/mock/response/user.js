@@ -1,5 +1,5 @@
 export const getUserInfo=(options)=>{
-    console.log(options)
+    
 }
 export const authorization=()=>{
     return {

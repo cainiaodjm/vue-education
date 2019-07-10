@@ -14,7 +14,6 @@ export default {
     },
     methods:{
         handleClick(){
-            console.log('i-button-page')
         }
     }
 }

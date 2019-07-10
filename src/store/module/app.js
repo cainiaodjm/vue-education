@@ -1,12 +1,31 @@
 import {
   getTagNavListFromLocalstorage,
-  setTagNavListInLocalstorage
+  setTagNavListInLocalstorage,
+  getRouteTitleHandled,
+  getMenuByRouter,
+  routeHasExist
 } from '../../lib/util'
 export default {
   state:{
     tagNavList:[]
   },
+  getters:{
+    
+  },
   mutations:{
+    addTag(state,{route,type="unshift"}){
+      //getRouteTitleHandled 会返回一个路由对象 
+      let router=getRouteTitleHandled(route)
+      if(!routeHasExist(state.tagNavList,router)){
+        if (type === 'push') state.tagNavList.push(router)
+        else{
+          state.tagNavList.splice(1, 0, router)
+        }
+        setTagNavListInLocalstorage([...state.tagNavList])
+      }
+      
+
+    },
     setTagNavList(state,list){
       let tagList=[]
       if(list){

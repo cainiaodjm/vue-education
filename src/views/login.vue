@@ -61,7 +61,6 @@ export default {
     ...mapActions(["login"]),
     loginSubmit(name) {
       this.$refs[name].validate(valid => {
-        console.log(this)
         if (valid) {
           this.login({
             userName: this.loginForm.username,

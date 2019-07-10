@@ -17,6 +17,7 @@ export const defaultConfig={
     */
     useI18n: true,
     cookieExpires: 1,
+    
     baseUrl: {
         dev: 'http://localhost:17100',
         pro: 'https://www.cainiaodjm.top:17000'

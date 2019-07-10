@@ -12,7 +12,6 @@ export const getFileList = (start=0,count=10) => {
 }
 //获取文件
 export const getFile = ({ key, type, source }) => {
-  console.log(key, type, source)
   return axios.request({
     url: '/v1/file/get_file',
     method: 'post',

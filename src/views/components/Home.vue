@@ -25,18 +25,13 @@ export default {
     HelloWorld
   },
   beforeRouteEnter (to, from, next) {
-    //this
- // next(vm=>{
-    //   console.log(vm)
-    // })
-    // console.log(this)
     next()
   },
   methods:{
     getUserInfo(){
      
       getUserInfo().then(res=>{
-        console.log(res)
+
       })
     },
     handleClick(type){

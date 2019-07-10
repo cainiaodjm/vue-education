@@ -50,7 +50,7 @@ export default {
       this.$refs.formValidate.validate(valid => {
         if (valid) {
           addUser(this.formData).then(res => {
-            console.log(res);
+            
           });
         }
       });

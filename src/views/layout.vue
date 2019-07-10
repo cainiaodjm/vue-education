@@ -7,9 +7,17 @@
         collapsed-width="64"
         collapsible
         hide-trigger
+
         v-model="collapsed"
       >
-        <side-menu :list="routers" :collapsed="this.collapsed" @on-select="turnToPage"></side-menu>
+        <side-menu
+          accordion
+          ref="sideMenu"
+          :active-name="$route.name"
+          :list="routers"
+          :collapsed="this.collapsed"
+          @on-select="turnToPage"
+        ></side-menu>
       </Sider>
       <Layout>
         <Header class="header-wrapper">
@@ -21,7 +29,7 @@
             <div class="tag-nav-wrapper">
               <!-- <Tabs type="card" :animated="false">
                 <TabPane :label="item.name" v-for="(index,item) in tabList" :key="`tabNav${index}`"></TabPane>
-              </Tabs> -->
+              </Tabs>-->
               <tags-nav :list="tagNavList" />
             </div>
             <Content class="content-wrapper">
@@ -38,8 +46,8 @@
 <script>
 import SideMenu from "@/components/side-menu";
 import HeaderBar from "@/components/header-bar";
-import TagsNav from '@/views/main/tags-nav'
-import  {getNewTagList} from '@/lib/util'
+import TagsNav from "@/views/main/tags-nav";
+import { getNewTagList, getMenuByRouter } from "@/lib/util";
 import { mapState, mapMutations } from "vuex";
 export default {
   components: {
@@ -49,70 +57,22 @@ export default {
   },
   data() {
     return {
-      collapsed: false,
-      menuList: [
-        {
-          title: "内容管理",
-          icon: "ios-albums",
-          name: "content-manage",
-          children: [
-            {
-              title: "添加文章",
-              icon: "ios-albums",
-              name: "add-title"
-            }
-          ]
-        },
-        {
-          title: "仓库管理",
-          icon: "ios-albums",
-          name: "wh-manage"
-        },
-        {
-          title: "财务管理",
-          icon: "ios-albums",
-          name: "finance-manage",
-          children: [
-            {
-              title: "账单管理",
-              icon: "ios-albums",
-              name: "bill-manage",
-              children: [
-                {
-                  name: "bill-create",
-                  title: "账单生成",
-                  icon: "ios-albums"
-                },
-                {
-                  name: "bill-table",
-                  title: "账单报表",
-                  icon: "ios-albums"
-                }
-              ]
-            },
-            {
-              name: "tax-manage",
-              title: "税务管理",
-              icon: "ios-albums"
-            }
-          ]
-        }
-      ]
+      collapsed: false
     };
   },
+  mounted() {},
   computed: {
-    tagNavList () {
-      return this.$store.state.app.tagNavList
+    tagNavList() {
+      return this.$store.state.app.tagNavList;
     },
     triggerClasses() {
       return ["trigger-icon", this.collapsed ? "rotate" : ""];
     },
-    //从全局的state中获取当前的routers 当然这个routers是包含所有的 不能把公共页放进去
+
     ...mapState({
-      routers: state =>
-        state.router.routers.filter(item => {
-          return item.path !== "*" && item.name !== "login";
-        }),
+      routers: state => {
+        return getMenuByRouter(state.router.routers, ["super_admin", "access"]);
+      },
       tabList: state => state.topNav.tabList
     })
   },
@@ -124,47 +84,40 @@ export default {
     /**
      * 监视
      */
-    '$route'(newRoute) {
-      console.log(newRoute)
-      
-      const { name, query, params, meta } = newRoute
-      console.log(this.tagNavList)
-      // this.UPDATE_ROUTER(newRoute);
-      this.setTagNavList(getNewTagList(this.tagNavList,newRoute))
+    $route(newRoute) {
+      const { name, query, params, meta } = newRoute;
+      this.addTag({
+        route: { name, query, params, meta },
+        type: "push"
+      });
+      this.setTagNavList(getNewTagList(this.tagNavList, newRoute));
+      this.$refs.sideMenu.updateOpenName(newRoute.name);
     }
   },
   methods: {
-    turnToPage(route){
+    turnToPage(route) {
       /**
        * 编程式的导航
        * router.push 的参数可以是一个字符串,或者是一个描述地址的对象
-       * 
+       *
        */
-      console.log(route)
-     let {name,params,query}={}
-     if(typeof route === 'string') name=route
-     else{
-       name=route.name
-       params=router.params
-       query=router.query
-     }
+      let { name, params, query } = {};
+      if (typeof route === "string") name = route;
+      else {
+        name = route.name;
+        params = router.params;
+        query = router.query;
+      }
       this.$router.push({
         name,
         params,
         query
-      })
+      });
     },
     handleCollapsedChange(state) {
-      console.log("layout中的collapsed为" + state);
-      console.log(
-        "我是调用header-bar的组件 我已经接收到了修改事件 并将修改后的值传给header-bar了"
-      );
       this.collapsed = state;
     },
-    ...mapMutations([
-      "UPDATE_ROUTER",
-      "setTagNavList"
-      ])
+    ...mapMutations(["UPDATE_ROUTER", "setTagNavList", "addTag"])
   }
 };
 </script>
