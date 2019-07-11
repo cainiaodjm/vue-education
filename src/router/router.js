@@ -81,6 +81,22 @@ export const routerMap = [
           title: '文件管理'
         },
         component: () => import('../views/oldland/file_manage.vue')
+      },
+      {
+        path:"add_post",
+        name:"add_post",
+        meta:{
+          title:"添加文章"
+        },
+        component:() => import('../views/oldland/add_post.vue')
+      },
+      {
+        path:"post_list",
+        name:"post_list",
+        meta:{
+          title:"文章管理"
+        },
+        component:()=>import('../views/oldland/post.vue')
       }
     ]
   },
