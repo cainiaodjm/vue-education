@@ -5,7 +5,7 @@
 // export const baseURL=process.env.NODE_ENV==='production'?
 // 'http//production.com':'http://localhost:3000'
 export const baseURL=process.env.NODE_ENV==='production'?
-'https://www.cainiaodjm.top:17000':'http://localhost:17100'
+'https://www.cainiaodjm.top':'http://localhost:17000'
 
 export const defaultConfig={
     /**
@@ -19,8 +19,8 @@ export const defaultConfig={
     cookieExpires: 1,
     
     baseUrl: {
-        dev: 'http://localhost:17100',
-        pro: 'https://www.cainiaodjm.top:17000'
+        dev: 'http://localhost:17000',
+        pro: 'https://www.cainiaodjm.top'
     },
 
 }
