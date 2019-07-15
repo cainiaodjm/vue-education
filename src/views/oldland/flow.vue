@@ -32,7 +32,7 @@
           <FormItem label="期刊图片">
             <Upload
               ref="uploadImage"
-              action="http://localhost:17100/v1/file/upload_file"
+              action="http://localhost:17000/v1/file/upload_file"
               :headers="_headers"
               name="file"
               :on-progress="handleProgress"
@@ -57,7 +57,7 @@
           </FormItem>
           <FormItem label="音乐链接" v-show="formItem.flowType == 200">
             <Upload
-              action="http://localhost:17100/v1/file/upload_file"
+              action="http://localhost:17000/v1/file/upload_file"
               :headers="_headers"
               name="file"
               :on-progress="handleProgress"
