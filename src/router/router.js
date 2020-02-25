@@ -1,4 +1,3 @@
-import Home from '../views/components/Home.vue'
 import Layout from '../views/layout.vue'
 /**
  * iview-admin中meta除了原生参数外可配置的参数:
@@ -17,6 +16,23 @@ import Layout from '../views/layout.vue'
  */
 export const routerMap = [
   {
+    path: "/account-book",
+    name: "account-book",
+    component: Layout,
+    meta: {
+      title: "记账本"
+    },
+    children: [
+    {
+      path: "bill",
+      name: "bill",
+      meta: {
+        title: "账单统计"
+      },
+      component: () => import('../views/accout-book/account-book.vue')
+    }]
+  },
+  {
     path: '/vuejs',
     name: 'vuejs',
     component: Layout,
@@ -24,39 +40,46 @@ export const routerMap = [
       title: 'VueJs实战'
     },
     children: [
-      {
-        path: 'demo1',
-        name: 'demo1',
-        meta: {
-          title: 'demo1'
-        },
-        component: () => import('../views/vuejs/demo1/demo1.vue')
+    {
+      path: 'demo1',
+      name: 'demo1',
+      meta: {
+        title: 'demo1'
       },
-      {
-        path: 'demo2-cart',
-        name: 'demo2-cart',
-        meta: {
-          title: 'demo2-cart'
-        },
-        component: () => import('../views/vuejs/demo2/cart.vue')
+      component: () => import('../views/vuejs/demo1/demo1.vue')
+    },
+    {
+      path: 'demo2-cart',
+      name: 'demo2-cart',
+      meta: {
+        title: 'demo2-cart'
       },
-      {
-        path: 'demo2',
-        name: 'demo2',
-        meta: {
-          title: 'demo2'
-        },
-        component: () => import('../views/vuejs/demo2/main.vue')
+      component: () => import('../views/vuejs/demo2/cart.vue')
+    },
+    {
+      path: 'demo2',
+      name: 'demo2',
+      meta: {
+        title: 'demo2'
       },
-      {
-        path: 'demo3',
-        name: 'demo3',
-        meta: {
-          title: 'demo3'
-        },
-        component: () => import('../views/vuejs/demo3-jsx/demo3.vue')
-      }
-    ]
+      component: () => import('../views/vuejs/demo2/main.vue')
+    },
+    {
+      path: 'demo3',
+      name: 'demo3',
+      meta: {
+        title: 'demo3'
+      },
+      component: () => import('../views/vuejs/demo3-jsx/demo3.vue')
+    },
+    {
+      path: "demo4",
+      name: 'demo4',
+      meta: {
+        title: 'demo4'
+      },
+      component: () => import('../views/vuejs/demo4/bom.vue')
+    }]
   },
   {
     path: '/oldland',
@@ -66,39 +89,38 @@ export const routerMap = [
       title: '旧岛'
     },
     children: [
-      {
-        path: 'flow_page',
-        name: 'flow_page',
-        meta: {
-          title: '期刊'
-        },
-        component: () => import('../views/oldland/flow.vue')
+    {
+      path: 'flow_page',
+      name: 'flow_page',
+      meta: {
+        title: '期刊'
       },
-      {
-        path: "file_page",
-        name: 'file_page',
-        meta: {
-          title: '文件管理'
-        },
-        component: () => import('../views/oldland/file_manage.vue')
+      component: () => import('../views/oldland/flow.vue')
+    },
+    {
+      path: "file_page",
+      name: 'file_page',
+      meta: {
+        title: '文件管理'
       },
-      {
-        path:"add_post",
-        name:"add_post",
-        meta:{
-          title:"添加文章"
-        },
-        component:() => import('../views/oldland/add_post.vue')
+      component: () => import('../views/oldland/file_manage.vue')
+    },
+    {
+      path: "add_post",
+      name: "add_post",
+      meta: {
+        title: "添加文章"
       },
-      {
-        path:"post_list",
-        name:"post_list",
-        meta:{
-          title:"文章管理"
-        },
-        component:()=>import('../views/oldland/post.vue')
-      }
-    ]
+      component: () => import('../views/oldland/add_post.vue')
+    },
+    {
+      path: "post_list",
+      name: "post_list",
+      meta: {
+        title: "文章管理"
+      },
+      component: () => import('../views/oldland/post.vue')
+    }]
   },
   {
     path: '/',
@@ -109,18 +131,17 @@ export const routerMap = [
       hideInMenu: true
     },
     children: [
-      {
-        path: '/home',
-        name: 'home',
-        meta: {
-          hideInMenu: true,
-          title: '首页',
-          icon: 'md-home'
-        },
-        component: () => import('@/views/home.vue')
-
+    {
+      path: '/home',
+      name: 'home',
+      meta: {
+        hideInMenu: true,
+        title: '首页',
+        icon: 'md-home'
       },
-    ]
+      component: () => import('@/views/home.vue')
+
+    }, ]
   },
   {
     path: '/components',
@@ -131,79 +152,30 @@ export const routerMap = [
       icon: 'logo-buffer',
     },
     children: [
-      {
-        path: 'markdown_page',
-        name: 'markdown_page',
-        meta: {
-          title: '富文本编辑器'
-        },
-        component: () => import('../views/components/markdown-page.vue')
+    {
+      path: "split",
+      name: "split",
+      meta: {
+        title: "split"
       },
-      {
-        path: 'grid_page',
-        name: 'grid_page',
-        meta: {
-          title: 'grid_page'
-        },
-        component: () => import('../views/components/grid.vue')
+      component: () => import('../views/components/split.vue')
+    },
+    {
+      path: "input",
+      name: "input",
+      meta: {
+        title: "input"
       },
-      {
-        path: 'i-button-page',
-        name: 'i_button_page',
-        meta: {
-          title: 'i_button_page'
-        },
-        component: () => import('../views/components/i-button-page.vue')
+      component: () => import('../views/components/input.vue')
+    },
+    {
+      path: "edit-table",
+      name: "edit-table",
+      meta: {
+        title: "可编辑表格组件"
       },
-      {
-        path: 'form-page',
-        name: 'form_page',
-        meta: {
-          title: 'form_page'
-        },
-        component: () => import('../views/components/form-page.vue')
-      },
-      {
-        path: 'slide-render',
-        name: 'slide_render',
-        meta: {
-          title: "slide_render"
-        },
-        component: () => import('../views/components/slide-render.vue')
-      },
-      {
-        path: 'folder-tree-page',
-        name: 'folder_tree_page',
-        meta: {
-          title: "folder_tree_page"
-        },
-        component: () => import('../views/components/folder-tree-page/folder-tree-page.vue')
-      },
-      {
-        path: 'form',
-        name: 'form',
-        meta: {
-          title: "form"
-        },
-        component: () => import('../views/components/form.vue')
-      },
-      {
-        path: 'form-dynamic',
-        name: 'form_dynamic',
-        meta: {
-          title: "form_dynamic"
-        },
-        component: () => import('@/views/components/form-dynamic.vue')
-      },
-      {
-        path: 'tables',
-        name: 'tables',
-        meta: {
-          title: "tables"
-        },
-        component: () => import('@/views/components/tables.vue')
-      }
-    ]
+      component: () => import('../views/components/edit-table.vue')
+    }]
   }
 
 
@@ -213,20 +185,18 @@ export const routerMap = [
 
 //
 export const routes = [
-  {
-    path: '/login',
-    name: 'login',
-    meta:{
-      hideInMenu:true,
-    },
-    component: () => import('@/views/login.vue')
+{
+  path: '/login',
+  name: 'login',
+  meta: {
+    hideInMenu: true,
   },
-  {
-    path: '*',
-    meta:{
-      hideInMenu:true,
-    },
-    component: () => import('@/views/error_404.vue')
-  }
-]
-
+  component: () => import('@/views/login.vue')
+},
+{
+  path: '*',
+  meta: {
+    hideInMenu: true,
+  },
+  component: () => import('@/views/error_404.vue')
+}]

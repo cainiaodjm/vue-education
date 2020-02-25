@@ -42,6 +42,7 @@ export default {
       console.log(item)
     },
     showTitleInside(item){
+        console.log(item)
       return 
     }
   },

@@ -44,7 +44,7 @@ export default {
         password: [
           {
             required: true,
-            message: "Please fill in the user name",
+            message: "Please fill in the password",
             trigger: "blur"
           },
           {

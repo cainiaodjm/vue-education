@@ -6,6 +6,12 @@ export const getUserInfo=()=>{
         method:'get'
     })
 }
+export const getUserList=()=>{
+    return axios.request({
+        url:'/v1/user/list',
+        method:'get'
+    })
+}
 export const authorization=(token)=>{
     return axios.request({
         url:'/v1/authorization',

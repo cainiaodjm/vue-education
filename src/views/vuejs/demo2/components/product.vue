@@ -1,4 +1,4 @@
-<template>
+'<template>
   <div class="product-main" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
     <img :src="info.image" alt />
     <h4 :class="nameClasses" >{{info.name}}</h4>

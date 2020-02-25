@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { baseURL } from '@/config'
-import {getToken,encode} from '@/lib/util'
+import { getToken, encode } from '@/lib/util'
 
 class HttpRequest {
   constructor(baseUrl = baseURL) {
@@ -11,8 +11,8 @@ class HttpRequest {
     const config = {
       baseURL: this.baseUrl,
       headers: {
-        'content-type':'application/json',
-        Authorization:encode()
+        'content-type': 'application/json',
+        Authorization: encode()
         // token: (getToken()===false)?'':getToken()
       }
     }
@@ -32,8 +32,8 @@ class HttpRequest {
         // Spin.show() // 不建议开启，因为界面不友好
       }
       this.queue[url] = true
-      
-      config.headers['Authorization']=encode()
+
+      config.headers['Authorization'] = encode()
       return config
     }, error => {
       return Promise.reject(error)
@@ -42,9 +42,9 @@ class HttpRequest {
     instance.interceptors.response.use(res => {
       this.destroy(url)
       const { data, status } = res
-      if(res.headers['content-dispositon']){
+      if (res.headers['content-dispositon']) {
         return {
-          data:res.data,
+          data: res.data,
           dispositon: res.headers['content-dispositon']
         }
       }
