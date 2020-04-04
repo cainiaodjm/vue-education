@@ -21,6 +21,9 @@
   "rules": {
     "vue/html-self-closing": "off",
     "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }],
-    "no-unused-vars": "off"
+    "vue/no-unused-components":"off",
+    "no-unused-vars": "off",
+    "x-invalid-end-tag": "off",
+    "no-undef": "off"
   }
 }

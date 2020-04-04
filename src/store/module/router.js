@@ -16,8 +16,12 @@ const mutations={
 }
 
 const getAccessRouterList=(routes,page_list)=>{
+    console.log(routes,page_list)
     return routes.filter(item=>{
+        // console.log(item)
+        // console.log(page_list[item.name])
         if(page_list[item.name]){
+           
             if(item.children)item.children=getAccessRouterList(item.children,page_list)
             return true
         }else{
@@ -42,8 +46,10 @@ const actions={
                 if(Object.entries(page_list).every(item=>item[1])){
                     routerList=routerMap
                 }else{
+                    
                     //否则就要进行删选
                     routerList=getAccessRouterList(routerMap,page_list)
+                    console.log(routerList)
                 }
                 //合并路由
                 commit('CONCAT_ROUTES',routerList)

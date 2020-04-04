@@ -94,9 +94,6 @@ export default {
     folderList() {
       this.transData();
     },
-    folderList() {
-      this.transData();
-    }
   },
   mounted() {
     this.transData();

@@ -5,7 +5,7 @@
 // export const baseURL=process.env.NODE_ENV==='production'?
 // 'http//production.com':'http://localhost:3000'
 export const baseURL=process.env.NODE_ENV==='production'?
-'https://www.cainiaodjm.top':'http://localhost:17000'
+'http://47.107.126.18:17000/':'http://47.107.126.18:17000/'
 
 export const defaultConfig={
     /**

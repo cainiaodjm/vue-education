@@ -30,8 +30,8 @@ export default {
   data() {
     return {
       loginForm: {
-        username: "",
-        password: ""
+        username: "test111@qq.con",
+        password: "djm19941104"
       },
       loginRules: {
         username: [

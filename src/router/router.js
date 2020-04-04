@@ -49,7 +49,7 @@ export const routerMap = [
       component: () => import('../views/vuejs/demo1/demo1.vue')
     },
     {
-      path: 'demo2-cart',
+      path: 'demo2-cart/:id?',
       name: 'demo2-cart',
       meta: {
         title: 'demo2-cart'

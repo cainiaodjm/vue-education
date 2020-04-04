@@ -86,7 +86,7 @@ export default {
     activeName(name) {
       if (this.accordion) {
         this.openedNames = this.getOpenedNamesByActiveName(name);
-        console.log(this.openedNames);
+       
       } else
         this.openedNames = getUnion(
           this.openedNames,
@@ -98,7 +98,7 @@ export default {
     },
     openedNames() {
       this.$nextTick(() => {
-        console.log('sss')
+       
         this.$refs.menu.updateOpened();
       });
     }
@@ -112,10 +112,10 @@ export default {
          */
 
     getOpenedNamesByActiveName(name) {
-      console.log(name);
-      console.log(
-        this.$route.matched.map(item => item.name).filter(item => item !== name)
-      );
+      
+      // console.log(
+      //   this.$route.matched.map(item => item.name).filter(item => item !== name)
+      // );
       return this.$route.matched
         .map(item => item.name)
         .filter(item => item !== name);

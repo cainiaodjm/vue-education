@@ -7,7 +7,6 @@
         collapsed-width="64"
         collapsible
         hide-trigger
-
         v-model="collapsed"
       >
         <side-menu
@@ -22,15 +21,19 @@
       <Layout>
         <Header class="header-wrapper">
           <!-- <Icon :class="triggerClasses" type="md-menu" :size="32" @click.native="handleCollasped"  /> -->
-          <header-bar :collapsed="this.collapsed" @on-coll-change="handleCollapsedChange"></header-bar>
+          <header-bar
+            :collapsed="this.collapsed"
+            @on-coll-change="handleCollapsedChange"
+          ></header-bar>
         </Header>
         <Content class="content-card">
           <Layout class="main-layout-con">
             <div class="tag-nav-wrapper">
-              <!-- <Tabs type="card" :animated="false">
-                <TabPane :label="item.name" v-for="(index,item) in tabList" :key="`tabNav${index}`"></TabPane>
-              </Tabs>-->
-              <tags-nav :list="tagNavList" />
+              <Tabs type="card" :animated="false" :value="$route.name">
+                <TabPane :label="item.meta.title" :name="item.name" v-for="(item,index) in tabList" :key="`tabNav${index}`"></TabPane>
+              </Tabs>
+             
+              <!-- <tags-nav :list="tagNavList" /> -->
             </div>
             <Content class="content-wrapper">
               <keep-alive>
@@ -60,7 +63,9 @@ export default {
       collapsed: false
     };
   },
-  mounted() {},
+  mounted() {
+    console.log(this.tabList);
+  },
   computed: {
     tagNavList() {
       return this.$store.state.app.tagNavList;
@@ -73,7 +78,9 @@ export default {
       routers: state => {
         return getMenuByRouter(state.router.routers, ["super_admin", "access"]);
       },
-      tabList: state => state.topNav.tabList
+      tabList: state => {
+        return state.tabNav.tabList;
+      }
     })
   },
   watch: {
@@ -86,12 +93,15 @@ export default {
      */
     $route(newRoute) {
       const { name, query, params, meta } = newRoute;
-      this.addTag({
-        route: { name, query, params, meta },
-        type: "push"
-      });
-      this.setTagNavList(getNewTagList(this.tagNavList, newRoute));
-      this.$refs.sideMenu.updateOpenName(newRoute.name);
+     
+
+      // this.addTag({
+      //   route: { name, query, params, meta },
+      //   type: "push"
+      // });
+      // this.setTagNavList(getNewTagList(this.tagNavList, newRoute));
+      // this.$refs.sideMenu.updateOpenName(newRoute.name);
+      this.UPDATE_ROUTER(newRoute);
     }
   },
   methods: {

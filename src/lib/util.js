@@ -54,9 +54,12 @@ export const putFileInFolder = (folderList, fileList) => {
   const folderListClone = folderListCloned.map(folderItem => {
     const folderId = folderItem.id
     let index = fileListCloned.length
+    
     while (--index >= 0) {
+    
       const fileItem = fileListCloned[index]
       if (fileItem.folder_id === folderId) {
+        //获取file
         const file = fileListCloned.splice(index, 1)[0]
         file.title = file.name
         if (folderItem.children) {
@@ -69,6 +72,7 @@ export const putFileInFolder = (folderList, fileList) => {
     folderItem.type = "folder"
     return folderItem
   })
+  console.log(folderListClone)
   return folderListClone
 }
 export const downloadFileByFrame = (url) => {

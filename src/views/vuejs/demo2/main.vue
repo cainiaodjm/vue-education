@@ -2,6 +2,7 @@
 <div>
   <Card class="mall-wrapper">
     <p slot="title">商城demo</p>
+    <Button @click="turnToCar">跳转到购物车页面</Button>
    <div class="product-list"> 
       <product class="product"  :info="product" v-for="(product,index) in products" :key="index"></product>
     </div>
@@ -21,10 +22,21 @@ export default {
     Product
   },
   mounted(){
-    console.log(productData)
+    // console.log(productData)
     setTimeout(() => {
       this.products=productData
     }, 1000);
+  },
+  methods:{
+    turnToCar(){
+      let id = 'params' +(Math.random()*100).toFixed(0)
+      this.$router.push({
+        name:"demo2-cart",
+        params:{
+          id
+        }
+      })
+    }
   }
 }
 </script>
